@@ -16,3 +16,8 @@ scrape_configs:
       - targets: ['mopcon-node-exporter:9100']
         labels:
           instance: MOPCON-NODE-LOCAL
+
+      # Node Exporter - Remote
+      - targets: ['152.42.237.237:9100']
+        labels:
+          instance: MOPCON-NODE-UBUNTU
