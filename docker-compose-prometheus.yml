@@ -42,6 +42,18 @@ services:
       - --web.listen-address=:9113
       - --nginx.scrape-uri=http://mopcon-nginx:8080/nginx_status
 
+  # Push Gateway
+  mopcon-push-gateway:
+    image: prom/pushgateway
+    container_name: mopcon-push-gateway
+    restart: always
+    ports:
+      - "9091:9091"
+    networks:
+      - mopcon-network
+    command:
+      - --web.listen-address=:9091
+
 networks:
   mopcon-network:
     external: true

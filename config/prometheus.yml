@@ -26,3 +26,10 @@ scrape_configs:
       - targets: ['mopcon-nginx-exporter:9113']
         labels:
           instance: MOPCON-NODE-NGINX
+
+  - job_name: pushgateway
+    honor_labels: true
+    static_configs:
+      - targets: ['mopcon-push-gateway:9091']
+        labels:
+          instance: pushgateway
