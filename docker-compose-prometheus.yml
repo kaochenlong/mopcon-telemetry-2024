@@ -1,0 +1,22 @@
+services:
+  # Prometheus
+  mopcon-prometheus:
+    container_name: mopcon-prometheus
+    image: prom/prometheus
+    restart: unless-stopped
+    networks:
+      - mopcon-network
+    ports:
+      - 9090:9090
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./volumes/prometheus:/prometheus
+
+    command:
+      - --web.enable-lifecycle
+      - --config.file=/etc/prometheus/prometheus.yml
+
+networks:
+  mopcon-network:
+    external: true

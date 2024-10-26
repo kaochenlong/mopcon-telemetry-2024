@@ -1,0 +1,18 @@
+services:
+  mopcon-nginx:
+    container_name: mopcon-nginx
+    image: nginx:alpine3.20
+    restart: unless-stopped
+    networks:
+      - mopcon-network
+    ports:
+      - 8080:8080
+
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./html:/usr/share/nginx/html:ro
+
+networks:
+  mopcon-network:
+    external: true

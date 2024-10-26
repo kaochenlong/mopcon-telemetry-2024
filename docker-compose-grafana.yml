@@ -1,0 +1,19 @@
+services:
+  mopcon-grafana:
+    container_name: mopcon-grafana
+    image: grafana/grafana
+    restart: unless-stopped
+
+    networks:
+      - mopcon-network
+
+    ports:
+      - 3000:3000
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volumes/grafana:/var/lib/grafana
+
+networks:
+  mopcon-network:
+    external: true
