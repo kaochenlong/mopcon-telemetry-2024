@@ -9,3 +9,10 @@ scrape_configs:
       - targets: ['localhost:9090']
         labels:
           instance: MOPCON-PROMETHEUS
+
+  - job_name: exporters
+    static_configs:
+      # Node Exporter - Local
+      - targets: ['mopcon-node-exporter:9100']
+        labels:
+          instance: MOPCON-NODE-LOCAL

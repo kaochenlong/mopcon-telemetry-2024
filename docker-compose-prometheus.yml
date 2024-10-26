@@ -17,6 +17,18 @@ services:
       - --web.enable-lifecycle
       - --config.file=/etc/prometheus/prometheus.yml
 
+  # Node Exporter
+  mopcon-node-exporter:
+    image: prom/node-exporter
+    container_name: mopcon-node-exporter
+    restart: always
+    ports:
+      - "9100:9100"
+    networks:
+      - mopcon-network
+    command:
+      - --web.listen-address=:9100
+
 networks:
   mopcon-network:
     external: true
