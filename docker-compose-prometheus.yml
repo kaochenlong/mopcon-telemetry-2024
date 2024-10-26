@@ -29,6 +29,19 @@ services:
     command:
       - --web.listen-address=:9100
 
+  # Nginx Exporter
+  mopcon-nginx-exporter:
+    image: nginx/nginx-prometheus-exporter
+    container_name: mopcon-nginx-exporter
+    restart: always
+    ports:
+      - "9113:9113"
+    networks:
+      - mopcon-network
+    command:
+      - --web.listen-address=:9113
+      - --nginx.scrape-uri=http://mopcon-nginx:8080/nginx_status
+
 networks:
   mopcon-network:
     external: true

@@ -21,3 +21,8 @@ scrape_configs:
       - targets: ['152.42.237.237:9100']
         labels:
           instance: MOPCON-NODE-UBUNTU
+
+      # Nginx Exporter
+      - targets: ['mopcon-nginx-exporter:9113']
+        labels:
+          instance: MOPCON-NODE-NGINX
